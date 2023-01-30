@@ -4,6 +4,7 @@ import (
 	"etcd-dashboard/etcd"
 	"flag"
 	"github.com/gorilla/mux"
+	"github.com/sirupsen/logrus"
 	"net/http"
 	"time"
 )
@@ -33,6 +34,7 @@ func main() {
 	}
 	err = srv.ListenAndServe()
 	if err != nil {
+		logrus.Errorf("web server start failed %v", err)
 		panic(err)
 	}
 }
